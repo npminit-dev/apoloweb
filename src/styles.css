@@ -1,0 +1,73 @@
+@layer base {
+
+@font-face {
+  font-family: 'PoppinsRegular';
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/fonts/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'PoppinsSemiBold';
+  font-style: normal;
+  font-weight: 600;
+  src: url(/src/assets/fonts/Poppins-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: 'PoppinsBold';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/src/assets/fonts/Poppins-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'PoppinsItalic';
+  font-style: italic;
+  font-weight: 400;
+  src: url(/src/assets/fonts/Poppins-Italic.ttf);
+}
+
+@font-face {
+  font-family: 'PoppinsLight';
+  font-style: italic;
+  font-weight: 400;
+  src: url(/src/assets/fonts/Poppins-Light.ttf);
+}
+
+@font-face {
+  font-family: 'RobotoRegular';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/src/assets/fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'RobotoMedium';
+  font-style: normal;
+  font-weight: 500;
+  src: url(/src/assets/fonts/Roboto-Medium.ttf);
+}
+
+@font-face {
+  font-family: 'RobotoBold';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/src/assets/fonts/Roboto-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'RobotoItalic';
+  font-style: italic;
+  font-weight: 400;
+  src: url(/src/assets/fonts/Roboto-Italic.ttf);
+}
+
+@font-face {
+  font-family: 'RobotoLight';
+  font-style: italic;
+  font-weight: 400;
+  src: url(/src/assets/fonts/Roboto-Light.ttf);
+}
+
+}
