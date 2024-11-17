@@ -1,12 +1,12 @@
-import { StrictMode } from 'react'
+import { lazy, StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from './pages/Login'
-import Home from './pages/Home'
-import EditCreate from './pages/EditCreate'
 import './output.css'
 import './styles.css'
+const Login = lazy(() => import('./pages/Login'));
+const Home = lazy(() => import('./pages/Home'));
+const EditCreate = lazy(() => import('./pages/EditCreate'));
 
 const router = createBrowserRouter([
   {
@@ -15,22 +15,26 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/login',
-        element: <Login/>
+        element: <Suspense>
+          <Login/>
+        </Suspense>
       },
       {
         path: '/home',
-        element: <Home/>
+        element: <Suspense>
+          <Home/>
+        </Suspense>
       },
       {
         path: '/editcreate',
-        element: <EditCreate/>
+        element: <Suspense>
+          <EditCreate/>
+        </Suspense>
       }
     ]
   }
 ])
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <RouterProvider router={router}/>
-  </StrictMode>,
+  <RouterProvider router={router}/>
 )

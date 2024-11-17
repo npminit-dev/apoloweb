@@ -1,8 +1,10 @@
+import Navigation from '../components/Navigation';
+
 const EditCreate = () => {
   return ( 
-    <>
-      EditCreate
-    </>
+    <section>
+      <Navigation/>
+    </section>
   );
 }
  

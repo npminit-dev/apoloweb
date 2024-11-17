@@ -6,13 +6,17 @@ function App() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    navigate('/home')
+    const logged = localStorage.getItem('userLogged')
+    if(!logged) navigate('/login')
+    else navigate('/home') 
   }, []);
 
   return (
-    <main className="text-[50px]">
-      <Outlet/>
-    </main>
+    <div className='bg-main min-h-[100vh] min-w-[100vw]'>
+      <div>
+        <Outlet/>
+      </div>
+    </div>
   )
 }
 
