@@ -6,13 +6,8 @@ const useCharacteres = () => {
   const [characters, setCharacters] = useState([])
 
   useEffect(() => {
-    // console.log(loadState)
-    if(loadState === 'loading') loadCharacters()
+    if(loadState === 'loading' && !characters.length) loadCharacters()
   }, [loadState]);
-
-  // useEffect(() => {
-  //   console.log(characters)
-  // }, [characters]);
 
   const loadCharacters = async () => {
     let pageCount = 1;
@@ -27,10 +22,10 @@ const useCharacteres = () => {
         let data = await response.json()
         pageCount++
         setCharacters(characters => [...characters, ...data.results])
+        setLoadState('idle')
         if(!data.info.next) break;
       }
     }
-    if(loadState !== 'error') setLoadState('idle')
   }
 
   const reloadCharacters = () => setLoadState('loading')

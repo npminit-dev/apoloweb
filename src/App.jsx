@@ -1,5 +1,6 @@
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react';
+import { CharactersContextProvider } from './components/CharactersContext';
 
 function App() {
   
@@ -13,9 +14,11 @@ function App() {
 
   return (
     <div className='bg-main min-h-[100vh] min-w-[100vw]'>
-      <div>
-        <Outlet/>
-      </div>
+      <CharactersContextProvider>
+        <div>
+          <Outlet/>
+        </div>
+      </CharactersContextProvider>
     </div>
   )
 }
