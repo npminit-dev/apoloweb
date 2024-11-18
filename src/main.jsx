@@ -4,6 +4,7 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './output.css'
 import './styles.css'
+import Loading from './components/Loading'
 const Login = lazy(() => import('./pages/Login'));
 const Home = lazy(() => import('./pages/Home'));
 const EditCreate = lazy(() => import('./pages/EditCreate'));
@@ -15,19 +16,20 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/login',
-        element: <Suspense>
+        element: <Suspense fallback={<Loading size={80} title={'Loading /Login'}/>}>
           <Login/>
         </Suspense>
       },
       {
         path: '/home',
-        element: <Suspense>
+        element: <Suspense fallback={<Loading size={80} title={'Loading /Home'}/>}>
           <Home/>
-        </Suspense>
+        </Suspense>,
+        
       },
       {
         path: '/editcreate',
-        element: <Suspense>
+        element: <Suspense fallback={<Loading size={80} title={'Loading /EditCreate'}/>}>
           <EditCreate/>
         </Suspense>
       }

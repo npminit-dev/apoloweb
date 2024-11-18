@@ -5,7 +5,6 @@ const useUsers = () => {
   const [users, setUsers] = useState(JSON.parse(localStorage.getItem('users')) || [])
 
   useEffect(() => {
-    console.log(users)
     localStorage.setItem('users', JSON.stringify(users))
   }, [users])
 
@@ -15,15 +14,17 @@ const useUsers = () => {
     }
   }
 
-  const userExists = (userToCheck) => users.some(user => user.name === userToCheck.name && user.password === userToCheck.password)
+  const userExists = (userToCheck) => users.some(user => user.name === userToCheck.name)
 
   const addUser = (newUser) => {
-    if(users.every(user => user.name !== newUser.name && user.password !== newUser.password)) {
+    if(!userExists(newUser)) {
       setUsers(users => [...users, newUser])
     }
   }
 
-  return {setDefaultUser, addUser, userExists};
+  const checkCredentials = (userToCheck) => users.some(user => user.name === userToCheck.name && user.password === userToCheck.password)
+
+  return {setDefaultUser, addUser, userExists, checkCredentials};
 }
  
 export default useUsers;

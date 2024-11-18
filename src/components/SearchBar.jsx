@@ -6,7 +6,7 @@ import { CiSearch } from "react-icons/ci";
 const SearchBar = ({ search, setSearch }) => {
 
   return ( 
-    <search className='px-2 w-full flex items-center justify-center sticky top-[44px] z-50 bg-main'>
+    <search className='px-2 pb-1 sm:pb-2 w-full flex items-center justify-center sticky top-[44px] z-50 bg-main'>
       <Input
         value={search}
         onChange={({target}) => setSearch(target.value)}

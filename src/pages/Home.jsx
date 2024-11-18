@@ -1,22 +1,25 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import Character from '../components/Character';
 import Navigation from '../components/Navigation';
-import useCharacteres from '../services/useCharacters';
 import SearchBar from '../components/SearchBar';
 import { charactersCtx } from '../components/CharactersContext';
+import Loading from '../components/Loading';
+import useDocumentScroll from '../hooks/useDocumentScroll';
+import GoToTop from '../components/GoToTop';
 
 const Home = () => {
 
   const { characters, localCharacters, loadState, reloadCharacters, deleteCharacter } = useContext(charactersCtx);
   const [search, setSearch] = useState('')
+  const isScrolled = useDocumentScroll()
 
   return (
-    <section>
+    <section className='relative'>
       <Navigation />
       <SearchBar search={search} setSearch={setSearch} />
-      <ul>
+      <ul >
         {
-          loadState === 'idle' && Array.isArray(characters) ?
+          loadState === 'idle' ?
             localCharacters.concat(characters)
               .filter(char => search === '' || new RegExp(`${search}`, 'gi').test(char.name))
               .map(char =>
@@ -32,9 +35,10 @@ const Home = () => {
                   local={char.local}
                   deleteCharacter={deleteCharacter}
                 />
-              ) : null
+              ) : <Loading title={'Loading characters'} size={50}/>
         }
       </ul>
+      <GoToTop visible={isScrolled}/>
     </section>
   );
 }

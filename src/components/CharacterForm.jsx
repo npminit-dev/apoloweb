@@ -2,40 +2,59 @@ import { STATUS, GENDERS, LOCATIONS } from '../constants';
 import Input from './Input'
 import Button from './Button'
 import Select from './Select';
-import { useEffect } from 'react';
 
 const CharacterForm = ({ value, dispatch, withImage, action, cancelAction }) => {
 
+
+  const handleImageSelection = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.addEventListener('load', (e) => {
+        const base64String = e.target.result;
+        dispatch({type: 'SET_IMAGE', payload: base64String });
+      })
+      reader.readAsDataURL(file); 
+    }
+  }
+
   return (
-    <div className='flex items-center justify-center'>
-      <form onSubmit={action} className='flex flex-col items-center bg-sec rounded-md max-w-[300px] px-4 py-8'>
+    <div className='flex items-center justify-center mt-4'>
+      <form onSubmit={action} className='flex flex-col items-center bg-sec rounded-md max-w-[300px] px-4 py-4 sm:py-8'>
         <img src={value.image} className='rounded-full h-[100px] w-[100px]' />
         <Input
           onChange={(e) => dispatch({ type: 'SET_NAME', payload: e.target.value })}
-          label={'Name'} value={value.name}
+          label={'Name'} value={value.name} inputprops={{ required: true }}
         />
         <Input
           onChange={(e) => dispatch({ type: 'SET_SPECIES', payload: e.target.value })}
-          label={'Species'} value={value.species}
+          label={'Species'} value={value.species} inputprops={{ required: true }}
         />
         <Select
           onChange={(e) => dispatch({ type: 'SET_GENDER', payload: e.target.value })}
-          label={'Gender'} value={value.gender}
+          label={'Gender'} value={value.gender} inputprops={{ required: true }}
           options={GENDERS} classes={'w-full'}
         />
         <Select
           onChange={(e) => dispatch({ type: 'SET_STATUS', payload: e.target.value })}
-          label={'Status'} value={value.status}
+          label={'Status'} value={value.status} inputprops={{ required: true }}
           options={STATUS} classes={'w-full'}
         />
         <Select
           onChange={(e) => dispatch({ type: 'SET_ORIGIN', payload: e.target.value })}
-          label={'Origin'} value={value.origin}
+          label={'Origin'} value={value.origin} inputprops={{ required: true }}
           options={LOCATIONS} classes={'w-full'}
         />
-        <div className='w-full flex items-center justify-between'>
-          <Button buttonProps={{ type: 'submit' }}>Confirm</Button>
-          <Button action={cancelAction} classes={'bg-red-500'}>Cancel</Button>
+        {
+          withImage ?
+            <Input
+              onChange={(e) => handleImageSelection(e)}
+              label={'Image'} inputprops={{ type: 'file', accept: 'image/*', required: true }}
+            /> : null
+        }
+        <div className='w-full flex items-center justify-center'>
+          <Button buttonProps={{ type: 'submit' }} classes={'mt-4'}>Confirm</Button>
+          <Button action={cancelAction} classes={'bg-red-500 mt-4'}>Cancel</Button>
         </div>
       </form>
     </div>

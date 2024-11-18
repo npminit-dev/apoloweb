@@ -13,7 +13,8 @@ export default {
         'RobMed': ['RobotoMedium'],
         'RobBld': ['RobotoBold'],
         'RobIt': ['RobotoItalic'],
-        'RobLgt': ['RobotoLight']
+        'RobLgt': ['RobotoLight'],
+        'RobLgtIt': ['RobotoLightItalic']
       },
       colors: {
         'main': '#1E1E2F',

@@ -1,6 +1,6 @@
 const Input = ({ label, value, onChange, inputprops, classes }) => {
   return (
-    <label className={'inline-block font-PopReg text-txt my-1 ' + (classes || '')}>
+    <label className={'inline-block font-PopReg text-txt sm:my-1 ' + (classes || '')}>
       { label || '' }
       <input 
         value={value} 

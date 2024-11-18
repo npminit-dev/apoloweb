@@ -118,6 +118,7 @@ export const LOCATIONS = [
   "Tickets Please Guy Nightmare",
   "Trunk World",
   "Unity's Planet",
+  "unknown",
   "Venzenulon 7",
   "Vindicator's Base",
   "Worldender's lair",
@@ -138,3 +139,12 @@ export const STATUS = [
   'Dead',
   'unknown'
 ]
+
+export const NEWCHAR_DEFVALUES = { 
+  name: '', 
+  gender: 'unknown', 
+  origin: 'unknown', 
+  status: 'unknown', 
+  species: 'unknown', 
+  image: 'https://rickandmortyapi.com/api/character/avatar/19.jpeg' 
+}

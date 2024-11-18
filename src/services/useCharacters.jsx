@@ -6,7 +6,7 @@ const useCharacteres = () => {
   const [characters, setCharacters] = useState([])
 
   useEffect(() => {
-    if(loadState === 'loading' && !characters.length) loadCharacters()
+    if(loadState === 'loading') loadCharacters()
   }, [loadState]);
 
   const loadCharacters = async () => {

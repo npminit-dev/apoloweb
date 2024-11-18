@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 import useCharacteres from '../services/useCharacters';
-import useLocalCharacters from './useLocalCharacters';
+import useLocalCharacters from '../hooks/useLocalCharacters';
 
 export const charactersCtx = createContext()
 

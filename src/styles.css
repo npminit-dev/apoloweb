@@ -70,6 +70,16 @@
     src: url(/src/assets/fonts/Roboto-Light.ttf);
   }
 
+  @font-face {
+    font-family: 'RobotoLightItalic';
+    font-style: italic;
+    font-weight: 400;
+    src: url(/src/assets/fonts/Roboto-LightItalic.ttf);
+  }
+}
+
+input:focus {
+  outline: none;
 }
 
 .fadein {
@@ -78,6 +88,22 @@
 
 .fadeinleft {
   animation: fadeinleft 300ms ease-out forwards
+}
+
+.fadeinright {
+  animation: fadeinright 300ms ease-out forwards
+}
+
+.fadeinup {
+  animation: fadeinup 300ms ease-out forwards
+}
+
+.fadeindown {
+  animation: fadeindown 300ms ease-out forwards
+}
+
+.rotate {
+  animation: rotate 500ms linear infinite;
 }
 
 @keyframes fadein {
@@ -91,11 +117,53 @@
 
 @keyframes fadeinleft {
   from {
-    transform: translateX(-30px);
+    transform: translateX(-20px);
     filter: opacity(0)
   }
   to {
     transform: translateX(0);
     filter: opacity(1)
+  }
+}
+
+@keyframes fadeinright {
+  from {
+    transform: translateX(20px);
+    filter: opacity(0)
+  }
+  to {
+    transform: translateX(0);
+    filter: opacity(1)
+  }
+}
+
+@keyframes fadeinup {
+  from {
+    transform: translateY(20px);
+    filter: opacity(0)
+  }
+  to {
+    transform: translateY(0);
+    filter: opacity(1)
+  }
+}
+
+@keyframes fadeindown {
+  from {
+    transform: translateY(-20px);
+    filter: opacity(0)
+  }
+  to {
+    transform: translateY(0);
+    filter: opacity(1)
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateZ(0);
+  }
+  from {
+    transform: rotateZ(360deg);
   }
 }
