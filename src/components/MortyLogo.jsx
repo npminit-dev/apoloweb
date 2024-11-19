@@ -2,7 +2,7 @@ import useIsBlinking from '../hooks/useBlinking';
 
 const MortyLogo = ({ height, width }) => {
 
-  const isBlinking = useIsBlinking(3000)
+  const isBlinking = useIsBlinking(2000)
 
   return (
     <>

@@ -1,16 +1,20 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import { useEffect, useContext, useReducer, useState } from 'react';
-import { charactersCtx } from '../components/CharactersContext';
+import { appCtx } from '../components/AppContext';
 import CharacterForm from '../components/CharacterForm';
 import { NEWCHAR_DEFVALUES } from '../constants';
 import MortyLogo from '../components/MortyLogo';
 import CharacterPhrase from '../components/CharacterPhrase';
+import Button from '../components/Button';
+import Lottie from 'react-lottie-player'
+import RocketLight from '../assets/rocket-light.json'
+import RocketDark from '../assets/rocket-dark.json'
 
 const EditCreate = () => {
 
   const { state: toUpdate } = useLocation()
-  const { addCharacter, updateCharacter } = useContext(charactersCtx);
+  const { addCharacter, updateCharacter, theme } = useContext(appCtx);
   const [character, dispatch] = useReducer(characterReducer, toUpdate ? { ...toUpdate, local: true } : NEWCHAR_DEFVALUES);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
   const navigate = useNavigate()
@@ -18,6 +22,7 @@ const EditCreate = () => {
   const handleUpdate = (e) => {
     e.preventDefault()
     Object.hasOwn(toUpdate, 'local') ? updateCharacter(character.id, character) : addCharacter(character)
+    navigate('/Home')
   }
 
   const handleCreateCharacter = (e) => {
@@ -27,8 +32,7 @@ const EditCreate = () => {
   }
 
   return (
-    <section>
-      <Navigation />
+    <section className='h-full'>
       {
         toUpdate ?
           <div className='flex items-center justify-center pt-8 fadeinright'>
@@ -40,14 +44,19 @@ const EditCreate = () => {
             />
           </div> :
           !isCreateModalOpen ?
-            <div className='flex flex-col items-center justify-center my-12 fadeinright'>
-              <MortyLogo height={150} width={150} />
+            <div className='h-[calc(100vh-44px)] flex flex-col items-center justify-evenly fadeinright'>
+              <MortyLogo height={125} width={125} />
               <CharacterPhrase author={'Morty'}>
-                Uh, alright, listen... You can go to the 
-                <Link to={'/Home'} className='hover:underline font-RobReg font-bold'> character list</Link> to start editing your existing characters, or if you're feeling adventurous,
-                you could create a whole <span className='hover:underline font-RobReg text-emph cursor-pointer' onClick={() => setIsCreateModalOpen(true)}>new character </span>
+                Uh, alright, listen... You can go
+                to <Link to={'/Home'} className='hover:underline font-RobReg font-bold'>home </Link> to start editing your existing characters, or if you're feeling adventurous,
+                you could create a whole new character
                 from scratch! Just, uh... don't make it too complicated, okay?
               </CharacterPhrase>
+              <Button action={() => setIsCreateModalOpen(true)} classes={'dark:hover:bg-sec hover:bg-sec-light'}>Create!</Button>
+              <Lottie 
+                loop animationData={theme === 'light' ? RocketLight : RocketDark} play
+                style={{ height: 250, width: 250 }}
+              />
             </div> :
             <div className='fadeinup'>
               <CharacterForm

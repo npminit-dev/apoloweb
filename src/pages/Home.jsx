@@ -2,25 +2,24 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import Character from '../components/Character';
 import Navigation from '../components/Navigation';
 import SearchBar from '../components/SearchBar';
-import { charactersCtx } from '../components/CharactersContext';
+import { appCtx } from '../components/AppContext';
 import Loading from '../components/Loading';
-import useDocumentScroll from '../hooks/useDocumentScroll';
+import useVerticalScroll from '../hooks/useVerticalScroll';
 import GoToTop from '../components/GoToTop';
 
 const Home = () => {
 
-  const { characters, localCharacters, loadState, reloadCharacters, deleteCharacter } = useContext(charactersCtx);
+  const { characters, localCharacters, loadState, reloadCharacters, deleteCharacter } = useContext(appCtx);
   const [search, setSearch] = useState('')
-  const isScrolled = useDocumentScroll()
+  const { hasVerticalScroll, ref } = useVerticalScroll()
 
   return (
     <section className='relative'>
-      <Navigation />
       <SearchBar search={search} setSearch={setSearch} />
-      <ul >
+      <ul className='overflow-scroll h-[calc(100vh-80px)] sm:h-[calc(100vh-92px)]' ref={ref}>
         {
           loadState === 'idle' ?
-            localCharacters.concat(characters)
+            [...localCharacters].reverse().concat(characters)
               .filter(char => search === '' || new RegExp(`${search}`, 'gi').test(char.name))
               .map(char =>
                 <Character
@@ -38,7 +37,7 @@ const Home = () => {
               ) : <Loading title={'Loading characters'} size={50}/>
         }
       </ul>
-      <GoToTop visible={isScrolled}/>
+      <GoToTop visible={hasVerticalScroll} action={() => ref.current.scrollTo({ top: 0, behavior: 'smooth' })}/>
     </section>
   );
 }

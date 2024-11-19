@@ -9,7 +9,6 @@
   }
 
   input:focus, select:focus {
-    @apply bg-main text-txt shadowed;
-    transition-duration: 300ms;
+    @apply shadowed;
   }
 }

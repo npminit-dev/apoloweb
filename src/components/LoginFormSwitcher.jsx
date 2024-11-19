@@ -1,6 +1,6 @@
 const LoginFormSwitcher = ({ mode, handleSetMode }) => {
   return (
-    <a href='#' className='font-RobLgt text-lg text-txt hover:underline' onClick={handleSetMode}>
+    <a href='#' className='font-RobLgt text-lg dark:text-txt text-txt-light hover:underline' onClick={handleSetMode}>
       {mode === 'login' ? 'signin' : 'login'}
     </a>
   );

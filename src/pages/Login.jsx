@@ -1,16 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import useUsers from '../hooks/useUsers';
 import { useNavigate } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 import RickLogo from '../components/RickLogo';
 import CharacterPhrase from '../components/CharacterPhrase';
+import { appCtx } from '../components/AppContext';
 
 const Login = () => {
-  const [mode, setMode] = useState('login')
+  const { setLogged } = useContext(appCtx)
   const { addUser, setDefaultUser, userExists, checkCredentials } = useUsers()
+  const navigate = useNavigate()
+  
+  const [mode, setMode] = useState('login')
   const [user, setUser] = useState({ name: '', password: '' })
   const [validCredentials, setValidCredentials] = useState(true)
-  const navigate = useNavigate()
 
   useEffect(() => {
     setDefaultUser()
@@ -26,6 +29,7 @@ const Login = () => {
     e.preventDefault()
     if (checkCredentials(user)) {
       localStorage.setItem('userLogged', JSON.stringify(user))
+      setLogged(true)
       navigate('/home')
       setMode('signin')
     } else setValidCredentials(false)
@@ -41,8 +45,8 @@ const Login = () => {
   }
 
   return (
-    <div className='min-h-[100vh] min-w-[100vw] flex flex-col sm:flex-row items-center justify-center'>
-      <div className='w-fit flex flex-col items-center justify-center fadeinleft sm:mr-20 mb-5'>
+    <div className='min-h-[100vh] min-w-[100vw] flex flex-col md:flex-row items-center justify-center'>
+      <div className='w-fit flex flex-col items-center justify-center fadeinleft md:mr-20 mb-5'>
         <RickLogo height={150} width={150}/>
         <CharacterPhrase author={'Rick'} width={150}>
           {
@@ -62,7 +66,7 @@ const Login = () => {
         handleSetMode={handleSetMode}
         userExists={userExists}
       />
-      <p className='absolute right-1 top-0 font-RobLgt text-txt/50'>username: 'flor', password: '1234'</p>
+      <p className='absolute right-1 top-0 font-RobLgt dark:text-txt/50 text-txt-light/50'>username: 'flor', password: '1234'</p>
     </div>
   );
 }

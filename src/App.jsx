@@ -1,24 +1,37 @@
-import { Link, Outlet, useNavigate } from 'react-router-dom'
-import { useEffect } from 'react';
-import { CharactersContextProvider } from './components/CharactersContext';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react';
+import Navigation from './components/Navigation';
+import { appCtx } from './components/AppContext';
+import ThemeSwitch from './components/ThemeSwitch';
 
 function App() {
   
   const navigate = useNavigate()
+  const { setLogged, logged } = useContext(appCtx)
 
   useEffect(() => {
-    const logged = localStorage.getItem('userLogged')
-    if(!logged) navigate('/login')
-    else navigate('/home') 
+    const loginfo = localStorage.getItem('userLogged')
+    if(!loginfo) {
+      navigate('/login')
+      setLogged(false)
+    }
+    else {
+      navigate('/home')
+      setLogged(true)
+    }
   }, []);
 
   return (
-    <div className='bg-main min-h-[100vh] min-w-[100vw]'>
-      <CharactersContextProvider>
-        <div>
-          <Outlet/>
-        </div>
-      </CharactersContextProvider>
+    <div className='relative dark:bg-main bg-main-light h-[100vh] w-[100vw]'>
+      { logged ?  
+        <Navigation/> : 
+        <div className='absolute top-2 left-2'>
+          <ThemeSwitch/>
+        </div>  
+      }
+      <div>
+        <Outlet/>
+      </div>
     </div>
   )
 }

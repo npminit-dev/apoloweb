@@ -20,7 +20,7 @@ const CharacterForm = ({ value, dispatch, withImage, action, cancelAction }) => 
 
   return (
     <div className='flex items-center justify-center mt-4'>
-      <form onSubmit={action} className='flex flex-col items-center bg-sec rounded-md max-w-[300px] px-4 py-4 sm:py-8'>
+      <form onSubmit={action} className='flex flex-col items-center dark:bg-sec bg-main-light rounded-md max-w-[300px] px-4 py-4 sm:py-8 border-[1px] border-txt-light/50 dark:border-none'>
         <img src={value.image} className='rounded-full h-[100px] w-[100px]' />
         <Input
           onChange={(e) => dispatch({ type: 'SET_NAME', payload: e.target.value })}
@@ -53,8 +53,8 @@ const CharacterForm = ({ value, dispatch, withImage, action, cancelAction }) => 
             /> : null
         }
         <div className='w-full flex items-center justify-center'>
-          <Button buttonProps={{ type: 'submit' }} classes={'mt-4'}>Confirm</Button>
-          <Button action={cancelAction} classes={'bg-red-500 mt-4'}>Cancel</Button>
+          <Button buttonProps={{ type: 'submit' }} classes={'mt-4 hover:bg-sec-light'}>Confirm</Button>
+          <Button action={cancelAction} classes={'!bg-red-500 mt-4 hover:bg-sec-light'}>Cancel</Button>
         </div>
       </form>
     </div>

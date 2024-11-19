@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid';
 
 const Select = ({ label, value, onChange, options, classes }) => {
   return (
-    <label className={'inline-block font-PopReg text-txt sm:my-1 ' + (classes || '')}>
+    <label className={'inline-block font-PopReg dark:text-txt text-txt-light sm:my-1 ' + (classes || '')}>
       { label }
       <select className={'bg-txt text-main w-full rounded-sm px-2 py-1 placeholder:font-RobReg'} onChange={onChange} value={value} >
         {

@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './output.css'
 import './styles.css'
 import Loading from './components/Loading'
+import { AppCtxProvider } from './components/AppContext.jsx';
 const Login = lazy(() => import('./pages/Login'));
 const Home = lazy(() => import('./pages/Home'));
 const EditCreate = lazy(() => import('./pages/EditCreate'));
@@ -38,5 +39,7 @@ const router = createBrowserRouter([
 ])
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}/>
+  <AppCtxProvider>
+    <RouterProvider router={router}/>
+  </AppCtxProvider>
 )

@@ -78,6 +78,12 @@
   }
 }
 
+body {
+  max-width: 100vw;
+  max-height: 100vh;
+  position: relative;
+}
+
 input:focus {
   outline: none;
 }
@@ -104,6 +110,14 @@ input:focus {
 
 .rotate {
   animation: rotate 500ms linear infinite;
+}
+
+.rotatedown {
+  animation: rotatehalf 300ms ease-out forwards !important
+}
+
+.rotateup {
+  animation: rotatehalf 300ms ease-in reverse forwards !important
 }
 
 @keyframes fadein {
@@ -165,5 +179,14 @@ input:focus {
   }
   from {
     transform: rotateZ(360deg);
+  }
+}
+
+@keyframes rotatehalf {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(-180deg);
   }
 }

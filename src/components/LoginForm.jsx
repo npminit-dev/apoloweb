@@ -10,8 +10,8 @@ const LoginForm = ({ mode, handleSubmit, user, setUser, validCredentials, handle
   const shouldBeDisabled = () => user.name.trim() === '' || user.password.trim() === ''
 
   return (
-    <form onSubmit={handleSubmit} className='w-[300px] px-4 py-8 bg-sec rounded-md flex flex-col items-center fadeinright'>
-      <h1 className='font-RobReg text-3xl text-txt my-4'>
+    <form onSubmit={handleSubmit} className='w-[300px] px-4 py-8 dark:bg-sec bg-main-light rounded-md flex flex-col items-center fadeinright dark:border-none border-[1px] border-txt-light/50'>
+      <h1 className='font-RobReg text-3xl dark:text-txt text-txt-light my-4'>
         {mode === 'signin' ? 'Create account' : 'Log in'}
       </h1>
       <div>

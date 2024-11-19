@@ -16,7 +16,7 @@ const CharacterDataEntry = ({ title, value }) => {
   }
 
   return (
-    <h1 className='font-PopReg text-sm sm:text-base text-txt text-ellipsis text-nowrap overflow-hidden'>
+    <h1 className='font-PopReg text-sm sm:text-base dark:text-txt text-txt-light text-ellipsis text-nowrap overflow-hidden'>
       <b>{title}:</b> <span className={`font-PopLgt ${statusColor(title, value)}`}>{value}</span>
     </h1>
   );

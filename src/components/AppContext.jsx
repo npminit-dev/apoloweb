@@ -1,15 +1,17 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 import useCharacteres from '../services/useCharacters';
 import useLocalCharacters from '../hooks/useLocalCharacters';
 
-export const charactersCtx = createContext()
+export const appCtx = createContext()
 
-export function CharactersContextProvider({ children }) {
+export function AppCtxProvider({ children }) {
 
   const { characters, loadState, reloadCharacters } = useCharacteres();
   const { characters: localCharacters, addCharacter, deleteCharacter, updateCharacter } = useLocalCharacters()
+  const [logged, setLogged] = useState(false)
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
 
-  return <charactersCtx.Provider
+  return <appCtx.Provider
     value={{
       characters,
       localCharacters,
@@ -17,11 +19,15 @@ export function CharactersContextProvider({ children }) {
       reloadCharacters,
       addCharacter,
       deleteCharacter,
-      updateCharacter
+      updateCharacter,
+      logged,
+      setLogged,
+      theme,
+      setTheme
     }}
   >
     { children }
-  </charactersCtx.Provider>
+  </appCtx.Provider>
 
 }
 
