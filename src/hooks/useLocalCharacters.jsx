@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+/* este hook usa IndexedDB para almacenar los personajes creados y mantenerlo sincronizado con el estado interno */
+
 const initDB = () => {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open('RickAndMortyDB', 1);
@@ -25,6 +27,7 @@ const initDB = () => {
 const useLocalCharacters = () => {
   const [characters, setCharacters] = useState([]);
 
+  /* inicializacion */
   useEffect(() => {
     (async () => {
       const db = await initDB();
@@ -38,6 +41,7 @@ const useLocalCharacters = () => {
     })();
   }, []);
 
+  /* funciones CRUD */
   const addCharacter = async (character) => {
     const db = await initDB();
     const transaction = db.transaction('characters', 'readwrite');

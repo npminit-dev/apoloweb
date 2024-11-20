@@ -23,7 +23,6 @@ export default {
         'emph': '#00ADB5', 
         'txt': '#E0E0E0', 
         'txt_emph': '#FFFFFF', 
-
         'main-light': '#F5F5F5', 
         'sec-light': '#E0E0E0', 
         'emph-light': '#007A80', 

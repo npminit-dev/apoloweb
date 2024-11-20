@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+/* Este hook se usa para logear los usuarios, registrar, validacion, y almacenamiento el la storage */
+
 const useUsers = () => {
 
   const [users, setUsers] = useState(JSON.parse(localStorage.getItem('users')) || [])

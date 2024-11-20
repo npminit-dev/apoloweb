@@ -1,5 +1,5 @@
-import Lottie from 'react-lottie-player';
-import Morty from '../assets/morty.json'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import srcUrl from "./../assets/morty.lottie?url";
 
 const About = () => {
   return (
@@ -7,11 +7,11 @@ const About = () => {
       <div className='z-50 text-center text-txt-light dark:text-txt'>
         <h2 className='font-RobMed text-3xl mb-4 text-txt-light dark:text-txt'>Made with ❤️</h2>
         <p className='w-[200px] text-lg text-txt-light dark:text-txt'>
-          For more information about this technical test (libraries used, techniques, features), consult the README.md file 🤠
+          For more information about this technical test (libraries used, techniques, features), check the README.md file 🤠
         </p>
       </div>
-      <Lottie 
-        animationData={Morty} loop play 
+      <DotLottieReact 
+        src={srcUrl} loop autoplay 
         style={{ height: 250, width: 250 }}
       />
     </section>

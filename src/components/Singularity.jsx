@@ -1,12 +1,13 @@
 import { useContext } from 'react';
 import { appCtx } from './AppContext';
+import Particles from './Particles'
 
 const Singularity = () => {
 
   const { theme } = useContext(appCtx)
 
   return (
-    <div className='absolute left-0 right-0 top-0 bottom-0 flex items-center justify-center z-0'>
+    <div className='absolute left-0 right-0 top-0 bottom-0 flex items-center justify-center z-0 overflow-hidden'>
       <div className='flex items-center justify-center h-[700px] w-[700px] dark:bg-emph/30 bg-emph-light/30 rounded-full blur-3xl breathe z-0'>
       </div>
       <div className='absolute h-[200px] w-[200px] border-[1px] dark:border-[2px] border-main-light dark:border-main/30 animate-ping rounded-full [animation-delay:200ms]'></div>
@@ -18,6 +19,7 @@ const Singularity = () => {
           />
         </svg>
       </div>
+      <Particles/>
     </div>
   );
 }

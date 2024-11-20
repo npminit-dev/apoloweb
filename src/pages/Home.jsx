@@ -53,6 +53,7 @@ const Home = () => {
   );
 }
 
+/* filtro avanzado */
 export const filter = (char, search = '') => {
   const filters = search.trim().split(/[\s,]+/);
   let genderFilter = null;

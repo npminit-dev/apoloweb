@@ -6,9 +6,9 @@ import { NEWCHAR_DEFVALUES } from '../constants';
 import MortyLogo from '../components/MortyLogo';
 import CharacterPhrase from '../components/CharacterPhrase';
 import Button from '../components/Button';
-import Lottie from 'react-lottie-player'
-import RocketLight from '../assets/rocket-light.json'
-import RocketDark from '../assets/rocket-dark.json'
+import rocketLightUrl from '../assets/rocket-light.lottie?url'
+import rocketDarkUrl from '../assets/rocket-dark.lottie?url'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const EditCreate = () => {
 
@@ -52,9 +52,9 @@ const EditCreate = () => {
                 from scratch! Just, uh... don't make it too complicated, okay?
               </CharacterPhrase>
               <Button action={() => setIsCreateModalOpen(true)} classes={'dark:hover:bg-sec hover:bg-sec-light z-50'}>Create!</Button>
-              <Lottie 
-                loop animationData={theme === 'light' ? RocketLight : RocketDark} play
-                style={{ height: 250, width: 250, margin: '-50px 0', backgroundColor: 'transparent', color: 'transparent' }}
+              <DotLottieReact 
+                loop src={theme === 'light' ? rocketLightUrl : rocketDarkUrl} autoplay
+                style={{ height: 250, width: 250, margin: '-50px 0' }}
               />
             </div> :
             <div className='fadeinup'>

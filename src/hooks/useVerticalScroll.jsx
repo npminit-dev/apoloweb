@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 
+/* este hook sirve para observar el scroll de un elemento (al que se le pasara una ref) */
+
 const useVerticalScroll = () => {
   const [hasVerticalScroll, setHasVerticalScroll] = useState(false);
   const ref = useRef(null);

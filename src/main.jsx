@@ -11,6 +11,7 @@ const Login = lazy(() => import('./pages/Login'));
 const Home = lazy(() => import('./pages/Home'));
 const EditCreate = lazy(() => import('./pages/EditCreate'));
 
+/* las paginas son cargadas 'on demand', y contienen un componente que se renderiza mientras la pagina se carga */
 const router = createBrowserRouter([
   {
     path: '/',

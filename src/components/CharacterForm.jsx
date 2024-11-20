@@ -5,6 +5,7 @@ import Select from './Select';
 
 const CharacterForm = ({ value, dispatch, withImage, action, cancelAction }) => {
 
+  /* Permite la carga de imagenes para personajes almacenados en local */
   const handleImageSelection = (e) => {
     const file = e.target.files[0];
     if (file) {
