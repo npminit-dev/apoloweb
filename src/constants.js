@@ -131,6 +131,7 @@ export const LOCATIONS = [
 export const GENDERS = [
   'Male',
   'Female',
+  'Genderless',
   'unknown',
 ]
 
@@ -148,3 +149,6 @@ export const NEWCHAR_DEFVALUES = {
   species: 'unknown', 
   image: 'https://rickandmortyapi.com/api/character/avatar/19.jpeg' 
 }
+
+export const propRegexp = (keyword) => new RegExp(`(\\$${keyword}:.+?)(?=\\s|$|,|\\$)`, 'gim');
+export const nameExtractRegexp = new RegExp(`((?<!\$)|(?<!:))((?<=,)|(?<=\s)|(?<=$)|(?<=^))[^$,]+(?!\$)`, 'gim')

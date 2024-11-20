@@ -1,4 +1,4 @@
-import { lazy, StrictMode, Suspense } from 'react'
+import { lazy, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -6,6 +6,7 @@ import './output.css'
 import './styles.css'
 import Loading from './components/Loading'
 import { AppCtxProvider } from './components/AppContext.jsx';
+import About from './pages/About.jsx';
 const Login = lazy(() => import('./pages/Login'));
 const Home = lazy(() => import('./pages/Home'));
 const EditCreate = lazy(() => import('./pages/EditCreate'));
@@ -13,7 +14,7 @@ const EditCreate = lazy(() => import('./pages/EditCreate'));
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App/>,
+    element: <AppCtxProvider><App/></AppCtxProvider>,
     children: [
       {
         path: '/login',
@@ -33,13 +34,17 @@ const router = createBrowserRouter([
         element: <Suspense fallback={<Loading size={80} title={'Loading /EditCreate'}/>}>
           <EditCreate/>
         </Suspense>
+      },
+      {
+        path: '/about',
+        element: <Suspense fallback={<Loading size={80} title={'Loading /About'}/>}>
+          <About/>
+        </Suspense>
       }
     ]
   }
 ])
 
 createRoot(document.getElementById('root')).render(
-  <AppCtxProvider>
-    <RouterProvider router={router}/>
-  </AppCtxProvider>
+  <RouterProvider router={router}/>
 )

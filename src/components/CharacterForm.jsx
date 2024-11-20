@@ -5,7 +5,6 @@ import Select from './Select';
 
 const CharacterForm = ({ value, dispatch, withImage, action, cancelAction }) => {
 
-
   const handleImageSelection = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -20,7 +19,7 @@ const CharacterForm = ({ value, dispatch, withImage, action, cancelAction }) => 
 
   return (
     <div className='flex items-center justify-center mt-4'>
-      <form onSubmit={action} className='flex flex-col items-center dark:bg-sec bg-main-light rounded-md max-w-[300px] px-4 py-4 sm:py-8 border-[1px] border-txt-light/50 dark:border-none'>
+      <form onSubmit={action} className='flex flex-col items-center dark:bg-sec bg-main-light rounded-md max-w-[325px] px-4 py-4 sm:py-8 border-[1px] border-txt-light/50 dark:border-txt'>
         <img src={value.image} className='rounded-full h-[100px] w-[100px]' />
         <Input
           onChange={(e) => dispatch({ type: 'SET_NAME', payload: e.target.value })}
@@ -54,30 +53,11 @@ const CharacterForm = ({ value, dispatch, withImage, action, cancelAction }) => 
         }
         <div className='w-full flex items-center justify-center'>
           <Button buttonProps={{ type: 'submit' }} classes={'mt-4 hover:bg-sec-light'}>Confirm</Button>
-          <Button action={cancelAction} classes={'!bg-red-500 mt-4 hover:bg-sec-light'}>Cancel</Button>
+          <Button action={cancelAction} classes={'bg-red-500 dark:bg-red-500 mt-4 !hover:bg-sec-light'}>Cancel</Button>
         </div>
       </form>
     </div>
   );
 }
-
-const characterReducer = (state, action) => {
-  switch (action.type) {
-    case 'SET_NAME':
-      return { ...state, name: action.payload, local: true };
-    case 'SET_ORIGIN':
-      return { ...state, origin: action.payload, local: true };
-    case 'SET_GENDER':
-      return { ...state, gender: action.payload, local: true };
-    case 'SET_SPECIES':
-      return { ...state, species: action.payload, local: true };
-    case 'SET_STATUS':
-      return { ...state, status: action.payload, local: true };
-    case 'SET_IMAGE':
-      return { ...state, image: action.payload, local: true };
-    default:
-      return state;
-  }
-};
 
 export default CharacterForm;

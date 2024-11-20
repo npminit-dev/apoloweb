@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { IoSunny } from "react-icons/io5";
 import { IoMdMoon } from "react-icons/io";
 import { appCtx } from './AppContext';

@@ -1,6 +1,6 @@
-const CharacterPhrase = ({ author, children }) => {
+const CharacterPhrase = ({ author, children, maxW }) => {
   return (
-    <p className='font-RobLgtIt sm:text-xl dark:text-txt text-txt-light text-center max-w-[450px] p-2'>
+    <p style={{ maxWidth: maxW }} className='font-RobLgtIt sm:text-xl dark:text-txt text-txt-light text-center w-full p-2'>
       <span className='font-RobBld'>{author}—</span>: "{children}"
     </p>
   );

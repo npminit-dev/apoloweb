@@ -22,10 +22,10 @@ const useCharacteres = () => {
         let data = await response.json()
         pageCount++
         setCharacters(characters => [...characters, ...data.results])
-        setLoadState('idle')
         if(!data.info.next) break;
       }
     }
+    if(loadState !== 'error') setLoadState('idle')
   }
 
   const reloadCharacters = () => setLoadState('loading')

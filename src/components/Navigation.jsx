@@ -17,10 +17,11 @@ const Navigation = () => {
   }
 
   return (
-    <nav className='w-full flex items-center justify-between p-2 sticky top-0 dark:bg-main bg-main-light z-50'>
+    <nav className='w-full flex items-center justify-between p-2 sticky top-0 z-50'>
       <div>
         <Link to={'/Home'} className='mx-2 font-PopSB dark:text-txt text-txt-light text-lg cursor-pointer hover:text-emph duration-200'>Home</Link>
         <Link to={'/EditCreate'} className='mx-2 font-PopSB dark:text-txt text-txt-light text-lg cursor-pointer hover:text-emph duration-200'>Edit</Link>
+        <Link to={'/About'} className='mx-2 font-PopSB dark:text-txt text-txt-light text-lg cursor-pointer hover:text-emph duration-200'>About</Link>
       </div>
       <div className='flex items-center justify-center'>
         <ThemeSwitch/>

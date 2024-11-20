@@ -38,23 +38,21 @@ const Login = () => {
   const handleSignIn = (e) => {
     e.preventDefault()
     if (!userExists(user)) {
-      console.log('???')
       addUser(user)
       handleSetMode()
     }
   }
 
   return (
-    <div className='min-h-[100vh] min-w-[100vw] flex flex-col md:flex-row items-center justify-center'>
-      <div className='w-fit flex flex-col items-center justify-center fadeinleft md:mr-20 mb-5'>
+    <div className='relative h-[100vh] w-[100vw] flex flex-col md:flex-row items-center justify-center overflow-hidden'>
+      <div className='w-[250px] flex flex-col items-center justify-center fadeinleft md:mr-20 mb-5'>
         <RickLogo height={150} width={150}/>
-        <CharacterPhrase author={'Rick'} width={150}>
+        <CharacterPhrase author={'Rick'} maxW={350}>
           {
             mode === 'login' 
               ? <>Login is easy, Morty. Just don’t mess it up!</>
               : <>Signing up, huh? Morty, just type your info and don’t screw it up, simple!</>
           }
-          
         </CharacterPhrase>
       </div>
       <LoginForm

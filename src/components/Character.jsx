@@ -20,8 +20,8 @@ const Character = ({ id, name, status, species, gender, origin, image, local, de
   return (
     <li ref={ref} className='min-h-[150px]'>
       {
-        inView ? <div className='min-h-[150px] p-4 m-2 rounded-sm dark:bg-sec/50 bg-sec-light flex flex-col sm:flex-row items-center justify-start hover:outline hover:outline-[1px] dark:hover:outline-emph hover:outline-emph-light fadeinleft duration-300'>
-          <img src={image} className={`h-[100px] w-[100px] sm:h-[125px] sm:w-[125px] rounded-full sm:mr-8 mb-4 ${status === 'Dead' ? 'grayscale' : ''} hover:grayscale-0 duration-300 cursor-pointer`} />
+        inView ? <div className='min-h-[150px] p-4 m-2 rounded-sm dark:bg-sec/70 bg-sec-light/70 flex flex-col sm:flex-row items-center justify-start hover:outline hover:outline-[1px] dark:hover:outline-emph hover:outline-emph-light fadeinleft duration-300'>
+          <img src={image} alt='Character image' className={`h-[100px] w-[100px] sm:h-[125px] sm:w-[125px] rounded-full sm:mr-8 mb-4 ${status === 'Dead' ? 'grayscale' : ''} hover:grayscale-0 duration-300 cursor-pointer`} />
           <div className='flex flex-col items-center sm:items-start'>
             <h1 className='font-PopSB text-lg sm:text-xl dark:text-txt text-txt-light mb-2'>{name}</h1>
             <CharacterDataEntry title={'Origin'} value={origin} />
@@ -31,13 +31,13 @@ const Character = ({ id, name, status, species, gender, origin, image, local, de
           </div>
           <div className='w-[188px] sm:w-[94px] sm:ml-auto sm:mr-8 flex sm:flex-col items-end justify-center sm:justify-end mt-4'>
             <Button 
-              classes={'mt-[0px] mb-[0px] w-full w-[94px]'} 
+              classes={'mt-[0px] mb-[0px] !w-[94px]'} 
               action={handleStartEdit} 
               buttonProps={{ title: 'Edit character' }}
             >Edit</Button>
             {local ? <Button 
               action={() => deleteCharacter(id)} 
-              classes={'bg-red-500 mt-[0px] !w-full !px-0 !mb-0'} 
+              classes={'bg-red-500 dark:bg-red-500 mt-[0px] !w-full !px-0 !mb-0'} 
               buttonProps={{ title: 'Remove character' }}
             >Remove</Button> : null}
           </div>

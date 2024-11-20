@@ -31,9 +31,9 @@ const useLocalCharacters = () => {
       const transaction = db.transaction('characters', 'readonly');
       const store = transaction.objectStore('characters');
       const request = store.getAll();
-
+  
       request.onsuccess = () => {
-        setCharacters(request.result);
+        setCharacters(request.result.reverse()); 
       };
     })();
   }, []);
@@ -42,12 +42,12 @@ const useLocalCharacters = () => {
     const db = await initDB();
     const transaction = db.transaction('characters', 'readwrite');
     const store = transaction.objectStore('characters');
-
+  
     const newCharacter = { ...character, id: uuidv4(), local: true };
     store.add(newCharacter);
-
+  
     transaction.oncomplete = () => {
-      setCharacters((prev) => [...prev, newCharacter]);
+      setCharacters((prev) => [newCharacter, ...prev]);
     };
   };
 

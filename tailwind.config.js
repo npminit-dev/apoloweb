@@ -29,6 +29,10 @@ export default {
         'emph-light': '#007A80', 
         'txt-light': '#2C2C2C', 
         'txt_emph-light': '#000000', 
+      },
+      boxShadow: {
+        lgt: '0 0 4px #007A80',
+        dark: '0 0 4px #00ADB5'
       }
     },
   },

@@ -112,12 +112,24 @@ input:focus {
   animation: rotate 500ms linear infinite;
 }
 
+.rotateslow {
+  animation: rotate 10s reverse linear infinite;
+}
+
 .rotatedown {
   animation: rotatehalf 300ms ease-out forwards !important
 }
 
 .rotateup {
   animation: rotatehalf 300ms ease-in reverse forwards !important
+}
+
+.breathe {
+  animation: breathe 3s ease-in-out alternate infinite;
+}
+
+.fastbreathe {
+  animation: fastbreathe 20ms ease-in-out alternate infinite
 }
 
 @keyframes fadein {
@@ -188,5 +200,23 @@ input:focus {
   }
   to {
     transform: rotateZ(-180deg);
+  }
+}
+
+@keyframes breathe {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(.6)
+  }
+}
+
+@keyframes fastbreathe {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.9);
   }
 }

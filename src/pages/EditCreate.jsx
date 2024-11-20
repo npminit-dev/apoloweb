@@ -1,6 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Navigation from '../components/Navigation';
-import { useEffect, useContext, useReducer, useState } from 'react';
+import { useContext, useReducer, useState } from 'react';
 import { appCtx } from '../components/AppContext';
 import CharacterForm from '../components/CharacterForm';
 import { NEWCHAR_DEFVALUES } from '../constants';
@@ -32,10 +31,10 @@ const EditCreate = () => {
   }
 
   return (
-    <section className='h-full'>
+    <section className='h-full overflow-hidden'>
       {
         toUpdate ?
-          <div className='flex items-center justify-center pt-8 fadeinright'>
+          <div className='flex items-center justify-center pt-2 fadeinright'>
             <CharacterForm
               dispatch={dispatch}
               value={character}
@@ -44,18 +43,18 @@ const EditCreate = () => {
             />
           </div> :
           !isCreateModalOpen ?
-            <div className='h-[calc(100vh-44px)] flex flex-col items-center justify-evenly fadeinright'>
+            <div className='h-[calc(100vh-44px)] flex flex-col items-center justify-evenly fadein'>
               <MortyLogo height={125} width={125} />
-              <CharacterPhrase author={'Morty'}>
+              <CharacterPhrase author={'Morty'} maxW={600}>
                 Uh, alright, listen... You can go
                 to <Link to={'/Home'} className='hover:underline font-RobReg font-bold'>home </Link> to start editing your existing characters, or if you're feeling adventurous,
                 you could create a whole new character
                 from scratch! Just, uh... don't make it too complicated, okay?
               </CharacterPhrase>
-              <Button action={() => setIsCreateModalOpen(true)} classes={'dark:hover:bg-sec hover:bg-sec-light'}>Create!</Button>
+              <Button action={() => setIsCreateModalOpen(true)} classes={'dark:hover:bg-sec hover:bg-sec-light z-50'}>Create!</Button>
               <Lottie 
                 loop animationData={theme === 'light' ? RocketLight : RocketDark} play
-                style={{ height: 250, width: 250 }}
+                style={{ height: 250, width: 250, margin: '-50px 0', backgroundColor: 'transparent', color: 'transparent' }}
               />
             </div> :
             <div className='fadeinup'>
